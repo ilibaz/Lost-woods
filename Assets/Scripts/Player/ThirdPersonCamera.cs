@@ -10,19 +10,19 @@ public class ThirdPersonCamera : MonoBehaviour
     float minVerticalRotation = 15f;
     [SerializeField]
     float maxVerticalRotation = 35f;
+    [SerializeField]
+    Vector3 playerHeightOffset = new Vector3(0, 0.5f, 0);
 
     private Transform playerTransform;
     private MainInputActions inputActions;
     private Vector2 mouseInput;
     private Vector3 cameraRotation;
     private float initialCameraOffset;
-    private float initialCameraHeight;
 
     void Start()
     {
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
         initialCameraOffset = Vector3.Distance(transform.position, playerTransform.position);
-        initialCameraHeight = transform.position.y;
         cameraRotation = transform.rotation.eulerAngles;
 
         inputActions.General.RotateCamera.performed += context => mouseInput = context.ReadValue<Vector2>();
@@ -40,17 +40,13 @@ public class ThirdPersonCamera : MonoBehaviour
         }
 
         // rotate camera horizontally
-        transform.eulerAngles = new Vector3(transform.eulerAngles.x, cameraRotation.y, cameraRotation.z);
+        transform.eulerAngles = new Vector3(cameraRotation.x, cameraRotation.y, transform.eulerAngles.z);
 
         // compute camera's look direction
-        Vector3 cameraLookDirection = Quaternion.Euler(cameraRotation) * Vector3.forward;
+        Vector3 cameraLookDirection = Quaternion.Euler(transform.eulerAngles) * Vector3.forward;
 
         // position camera pushing back along the look direction
-        transform.position = -cameraLookDirection * initialCameraOffset + playerTransform.position;
-        transform.position = new Vector3(transform.position.x, initialCameraHeight, transform.position.z);
-
-        // rotate camera vertically
-        transform.eulerAngles = new Vector3(cameraRotation.x, transform.eulerAngles.y, transform.eulerAngles.z);
+        transform.position = -cameraLookDirection * initialCameraOffset + playerTransform.position + playerHeightOffset;
 
         // rotate player to have same direction as camera by copying Y rotation angle
         Vector3 playerRotation = playerTransform.eulerAngles;
