@@ -5,7 +5,11 @@ using UnityEngine;
 public class ThirdPersonCamera : MonoBehaviour
 {
     [SerializeField]
-    float horizontalSensitivity = 10.0f;
+    float sensitivity = 1.0f;
+    [SerializeField]
+    float minVerticalRotation = 15f;
+    [SerializeField]
+    float maxVerticalRotation = 35f;
 
     private Transform playerTransform;
     private MainInputActions inputActions;
@@ -29,12 +33,14 @@ public class ThirdPersonCamera : MonoBehaviour
         if (mouseInput != Vector2.zero)
         {
             // modify our camera rotation angle on Y axis with mouse X change
-            cameraRotation.y += mouseInput.x * horizontalSensitivity;
+            cameraRotation.y += mouseInput.x * sensitivity;
+            cameraRotation.x += -mouseInput.y * sensitivity;
+            cameraRotation.x = Mathf.Clamp(cameraRotation.x, minVerticalRotation, maxVerticalRotation);
             mouseInput = Vector2.zero;
         }
 
-        // rotate camera
-        transform.eulerAngles = cameraRotation;
+        // rotate camera horizontally
+        transform.eulerAngles = new Vector3(transform.eulerAngles.x, cameraRotation.y, cameraRotation.z);
 
         // compute camera's look direction
         Vector3 cameraLookDirection = Quaternion.Euler(cameraRotation) * Vector3.forward;
@@ -42,6 +48,9 @@ public class ThirdPersonCamera : MonoBehaviour
         // position camera pushing back along the look direction
         transform.position = -cameraLookDirection * initialCameraOffset + playerTransform.position;
         transform.position = new Vector3(transform.position.x, initialCameraHeight, transform.position.z);
+
+        // rotate camera vertically
+        transform.eulerAngles = new Vector3(cameraRotation.x, transform.eulerAngles.y, transform.eulerAngles.z);
 
         // rotate player to have same direction as camera by copying Y rotation angle
         Vector3 playerRotation = playerTransform.eulerAngles;
