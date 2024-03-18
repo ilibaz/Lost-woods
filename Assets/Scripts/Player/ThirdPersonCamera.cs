@@ -47,11 +47,6 @@ public class ThirdPersonCamera : MonoBehaviour
 
         // position camera pushing back along the look direction
         transform.position = -cameraLookDirection * initialCameraOffset + playerTransform.position + playerHeightOffset;
-
-        // rotate player to have same direction as camera by copying Y rotation angle
-        Vector3 playerRotation = playerTransform.eulerAngles;
-        playerRotation.y = transform.rotation.eulerAngles.y;
-        playerTransform.eulerAngles = playerRotation;
     }
 
     private void OnEnable()
