@@ -33,7 +33,8 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        rigidbody.velocity = new Vector3(inputMovementVector.x * speed, rigidbody.velocity.y, inputMovementVector.y * speed);
+        Vector3 direction = new Vector3(inputMovementVector.x, 0, inputMovementVector.y);
+        rigidbody.velocity = transform.rotation * new Vector3(direction.x * speed, rigidbody.velocity.y, direction.z * speed);
     }
 
     void OnEnable()
