@@ -603,6 +603,11 @@ PrefabInstance:
       propertyPath: speed
       value: 500
       objectReference: {fileID: 0}
+    - target: {fileID: 7804515584319866195, guid: 2f4a082920abc36459400e760bfc6020,
+        type: 3}
+      propertyPath: rotationInterpolationSpeed
+      value: 35
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    [SerializeField]
+    float rotationInterpolationSpeed = 25f;
+    [SerializeField] float runSpeed = 500f;
+
     MainInputActions inputActions;
     Animator animationController;
     Rigidbody rigidBody;
@@ -11,7 +15,6 @@ public class PlayerMovement : MonoBehaviour
     Vector3 cameraForward = new Vector3();
     Vector3 cameraRight = new Vector3();
 
-    [SerializeField] float speed = 1f;
 
     void Awake()
     {
@@ -40,12 +43,12 @@ public class PlayerMovement : MonoBehaviour
             Quaternion targetRotation = Quaternion.LookRotation(movementDirection, Vector3.up) * Quaternion.Euler(0f, Camera.main.transform.eulerAngles.y, 0f);
 
             // Apply the rotation
-            transform.rotation = Quaternion.Euler(0f, targetRotation.eulerAngles.y, 0f);
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * rotationInterpolationSpeed);
         }
         else
         {
             Quaternion targetRotation = Quaternion.LookRotation(cameraForward);
-            transform.rotation = Quaternion.Euler(0f, targetRotation.eulerAngles.y, 0f);
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * rotationInterpolationSpeed);
         }
 
         UpdateAnimator();
@@ -56,7 +59,7 @@ public class PlayerMovement : MonoBehaviour
         if (inputMovementVector.magnitude > 0.1f)
         {
             Vector3 movementDirection = cameraForward * inputMovementVector.y + cameraRight * inputMovementVector.x;
-            rigidBody.velocity = movementDirection * speed * Time.fixedDeltaTime;
+            rigidBody.velocity = movementDirection * runSpeed * Time.fixedDeltaTime;
         }
         else
         {
@@ -77,8 +80,6 @@ public class PlayerMovement : MonoBehaviour
 
     void UpdateAnimator()
     {
-        animationController.SetFloat("SpeedX", inputMovementVector.x);
-        animationController.SetFloat("SpeedY", inputMovementVector.y);
         animationController.SetBool("Running", inputMovementVector.magnitude > 0);
     }
 
