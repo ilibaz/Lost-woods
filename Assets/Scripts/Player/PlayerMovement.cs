@@ -59,7 +59,9 @@ public class PlayerMovement : MonoBehaviour
         if (inputMovementVector.magnitude > 0.1f)
         {
             Vector3 movementDirection = cameraForward * inputMovementVector.y + cameraRight * inputMovementVector.x;
+            float rbVelocityY = rigidBody.velocity.y;
             rigidBody.velocity = movementDirection * runSpeed * Time.fixedDeltaTime;
+            rigidBody.velocity = new Vector3(rigidBody.velocity.x, rbVelocityY, rigidBody.velocity.z);
         }
         else
         {
