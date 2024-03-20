@@ -12,6 +12,8 @@ public class ThirdPersonCamera : MonoBehaviour
     float maxVerticalRotation = 35f;
     [SerializeField]
     Vector3 playerHeightOffset = new Vector3(0, 0.5f, 0);
+    [SerializeField]
+    LayerMask obstacleMask;
 
     private Transform playerTransform;
     private MainInputActions inputActions;
@@ -46,7 +48,18 @@ public class ThirdPersonCamera : MonoBehaviour
         Vector3 cameraLookDirection = Quaternion.Euler(transform.eulerAngles) * Vector3.forward;
 
         // position camera pushing back along the look direction
-        transform.position = -cameraLookDirection * initialCameraOffset + playerTransform.position + playerHeightOffset;
+        Vector3 desiredPosition = -cameraLookDirection * initialCameraOffset + playerTransform.position + playerHeightOffset;
+
+        // check for collisions with objects on the way
+        RaycastHit hit;
+        if (Physics.Raycast(playerTransform.position, desiredPosition - playerTransform.position, out hit, initialCameraOffset, obstacleMask))
+        {
+            // Adjust camera position to be just in front of obstacle
+            Vector3 towardsPlayer = (transform.position - hit.point).normalized;
+            desiredPosition = hit.point + new Vector3(towardsPlayer.x, towardsPlayer.y * 1.5f, towardsPlayer.z);
+        }
+
+        transform.position = desiredPosition;
     }
 
     private void OnEnable()
