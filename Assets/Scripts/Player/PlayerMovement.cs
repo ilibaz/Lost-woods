@@ -4,16 +4,28 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField]
-    float rotationInterpolationSpeed = 25f;
+    [SerializeField] float rotationInterpolationSpeed = 25f;
     [SerializeField] float runSpeed = 500f;
+    [SerializeField] float jumpForce = 3f;
+    [SerializeField] Transform groundCheckOrigin;
+    [SerializeField] LayerMask groundMask;
 
+    // Input handling
     MainInputActions inputActions;
     Animator animationController;
     Rigidbody rigidBody;
-    Vector2 inputMovementVector = new Vector2();
     Vector3 cameraForward = new Vector3();
     Vector3 cameraRight = new Vector3();
+
+    // Movement
+    Vector2 inputMovementVector = new Vector2();
+    public bool isGrounded = false;
+    public bool canMove = true;
+    bool isJumping = false;
+    bool fireTriggerLanded = false;
+    float groundDistance = 0.5f;
+    float jumpCoolDown = 0.5f;
+    float timeSinceLastJump = 0f;
 
 
     void Awake()
@@ -23,18 +35,14 @@ public class PlayerMovement : MonoBehaviour
         rigidBody = GetComponent<Rigidbody>();
     }
 
-    void Start()
-    {
-
-    }
-
     void Update()
     {
         SaveCameraDirections();
+        CheckIsGrounded();
 
         inputMovementVector = inputActions.General.Movement.ReadValue<Vector2>();
 
-        if (inputMovementVector.magnitude > 0.1f)
+        if (canMove && inputMovementVector.magnitude > 0.1f)
         {
             // Calculate the movement direction based on input and character's orientation
             Vector3 movementDirection = new Vector3(inputMovementVector.x, 0, inputMovementVector.y);
@@ -51,12 +59,19 @@ public class PlayerMovement : MonoBehaviour
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * rotationInterpolationSpeed);
         }
 
+        if (inputActions.General.Jump.WasPressedThisFrame() && CanJump())
+        {
+            isJumping = true;
+            fireTriggerLanded = true;
+            timeSinceLastJump = Time.time;
+        }
+
         UpdateAnimator();
     }
 
     void FixedUpdate()
     {
-        if (inputMovementVector.magnitude > 0.1f)
+        if (canMove && inputMovementVector.magnitude > 0.1f)
         {
             Vector3 movementDirection = cameraForward * inputMovementVector.y + cameraRight * inputMovementVector.x;
             float rbVelocityY = rigidBody.velocity.y;
@@ -66,6 +81,12 @@ public class PlayerMovement : MonoBehaviour
         else
         {
             rigidBody.velocity = new Vector3(0f, rigidBody.velocity.y, 0f);
+        }
+
+        if (isJumping)
+        {
+            rigidBody.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            isJumping = false;
         }
     }
 
@@ -80,9 +101,33 @@ public class PlayerMovement : MonoBehaviour
         cameraRight.Normalize();
     }
 
+    bool CanJump()
+    {
+        return isGrounded && JumpCooldownHasPassed();
+    }
+
+    bool JumpCooldownHasPassed()
+    {
+        return timeSinceLastJump < Time.time - jumpCoolDown;
+    }
+
+    void CheckIsGrounded()
+    {
+        isGrounded = Physics.Raycast(groundCheckOrigin.position, Vector3.down, groundDistance, groundMask);
+        Debug.DrawRay(groundCheckOrigin.position, Vector3.down, Color.red, groundDistance);
+    }
+
     void UpdateAnimator()
     {
         animationController.SetBool("Running", inputMovementVector.magnitude > 0);
+
+        if (isJumping) { animationController.SetTrigger("Jump"); }
+
+        if (isGrounded && JumpCooldownHasPassed() && fireTriggerLanded)
+        {
+            animationController.SetTrigger("Landed");
+            fireTriggerLanded = false;
+        }
     }
 
     void OnEnable()
@@ -93,5 +138,18 @@ public class PlayerMovement : MonoBehaviour
     void OnDisable()
     {
         inputActions.General.Disable();
+    }
+
+    void OnCollisionStay(Collision collisionInfo)
+    {
+        if (!isGrounded)
+        {
+            canMove = false;
+        }
+    }
+
+    void OnCollisionExit(Collision collisionInfo)
+    {
+        canMove = true;
     }
 }
