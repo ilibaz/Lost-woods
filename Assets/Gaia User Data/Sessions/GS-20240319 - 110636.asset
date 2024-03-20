@@ -24,7 +24,7 @@ MonoBehaviour:
   m_terrainDepth: 512
   m_terrainHeight: 512
   m_seaLevel: 2.86
-  m_spawnDensity: 2
+  m_spawnDensity: 3
   m_isLocked: 0
   m_previewImageBytes: 
   m_previewImageWidth: 0
@@ -632,6 +632,94 @@ MonoBehaviour:
     sessionPlaybackState: 1
     m_terrainsFoldedOut: 0
     m_serializedExternalAction: 
+  - m_description: Clearing - Trees, AllTerrains, AnySource
+    m_operationType: 3
+    m_isActive: 1
+    m_affectedTerrainNames:
+    - Terrain_0_0-20240319 - 113413
+    m_operationDateTime: 20.03.2024 9:24:32
+    scriptableObjectAssetGUID: 69e2c1f6cc2f35141ae7352ac45aa624
+    m_isFoldedOut: 0
+    sessionPlaybackState: 1
+    m_terrainsFoldedOut: 0
+    m_serializedExternalAction: 
+  - m_description: Clearing - Trees GOs, AllTerrains, AnySource
+    m_operationType: 3
+    m_isActive: 1
+    m_affectedTerrainNames:
+    - Terrain_0_0-20240319 - 113413
+    m_operationDateTime: 20.03.2024 9:24:35
+    scriptableObjectAssetGUID: e88ee04ef97c02b4f8dc10008ccc7927
+    m_isFoldedOut: 0
+    sessionPlaybackState: 1
+    m_terrainsFoldedOut: 0
+    m_serializedExternalAction: 
+  - m_description: Spawning - Synty Tree Spawner(Clone)
+    m_operationType: 7
+    m_isActive: 1
+    m_affectedTerrainNames:
+    - Terrain_0_0-20240319 - 113413
+    m_operationDateTime: 20.03.2024 9:24:47
+    scriptableObjectAssetGUID: 59382fc807804bf48bd940354591ef9f
+    m_isFoldedOut: 0
+    sessionPlaybackState: 1
+    m_terrainsFoldedOut: 0
+    m_serializedExternalAction: 
+  - m_description: Spawning - Synty Tree Spawner(Clone)
+    m_operationType: 7
+    m_isActive: 1
+    m_affectedTerrainNames:
+    - Terrain_0_0-20240319 - 113413
+    m_operationDateTime: 20.03.2024 9:25:01
+    scriptableObjectAssetGUID: 6c3aa752495b0154d8b8103e33fc10f9
+    m_isFoldedOut: 0
+    sessionPlaybackState: 1
+    m_terrainsFoldedOut: 0
+    m_serializedExternalAction: 
+  - m_description: Spawning - Synty Tree Spawner(Clone)
+    m_operationType: 7
+    m_isActive: 1
+    m_affectedTerrainNames:
+    - Terrain_0_0-20240319 - 113413
+    m_operationDateTime: 20.03.2024 9:25:18
+    scriptableObjectAssetGUID: 4d9c68bd86ad8b6438717bf8201e0a7b
+    m_isFoldedOut: 0
+    sessionPlaybackState: 1
+    m_terrainsFoldedOut: 0
+    m_serializedExternalAction: 
+  - m_description: Spawning - Synty Tree Spawner(Clone)
+    m_operationType: 7
+    m_isActive: 1
+    m_affectedTerrainNames:
+    - Terrain_0_0-20240319 - 113413
+    m_operationDateTime: 20.03.2024 9:25:23
+    scriptableObjectAssetGUID: 02b2e2c6a9f1df34c8e98d6fb7cc1421
+    m_isFoldedOut: 0
+    sessionPlaybackState: 1
+    m_terrainsFoldedOut: 0
+    m_serializedExternalAction: 
+  - m_description: Spawning - Synty Tree Spawner(Clone)
+    m_operationType: 7
+    m_isActive: 1
+    m_affectedTerrainNames:
+    - Terrain_0_0-20240319 - 113413
+    m_operationDateTime: 20.03.2024 9:25:26
+    scriptableObjectAssetGUID: 178d27dc5d684f943af0aedd9c3e5404
+    m_isFoldedOut: 0
+    sessionPlaybackState: 1
+    m_terrainsFoldedOut: 0
+    m_serializedExternalAction: 
+  - m_description: Spawning - Synty Detail Spawner(Clone)
+    m_operationType: 7
+    m_isActive: 1
+    m_affectedTerrainNames:
+    - Terrain_0_0-20240319 - 113413
+    m_operationDateTime: 20.03.2024 9:25:58
+    scriptableObjectAssetGUID: 3074e969fc32cad4d8e6d5bf1a7c09d9
+    m_isFoldedOut: 0
+    sessionPlaybackState: 1
+    m_terrainsFoldedOut: 0
+    m_serializedExternalAction: 
   m_terrainMinMaxCache:
   - guid: 27d24213447878d4fbce42fa324504fb
     isWorldmap: 0
@@ -657,7 +745,7 @@ MonoBehaviour:
     isWorldmap: 1
     recalculate: 0
     min: 0
-    max: 0
+    max: 28.056763
   m_bakedMaskCacheEntries:
   - fileName: Terrain_0_0-20240319 - 113413_LayerGameObject_3584_5
     assetPath: Assets/Procedural Worlds/Packages - Install/Gaia/TerrainCollisionData/Terrain_0_0-20240319
@@ -679,12 +767,5 @@ MonoBehaviour:
     fullPath: C:/Users/bazan/Documents/GitHub/lost-woods/Assets/Procedural Worlds/Packages
       - Install/Gaia/TerrainCollisionData/Terrain_0_0-20240319 - 113413/Terrain_0_0-20240319
       - 113413_RadiusTag_Synty Medium Farm_100
-    texture: {fileID: 0}
-  - fileName: Terrain_0_0-20240319 - 113413_LayerGameObject_3584_0,5
-    assetPath: Assets/Procedural Worlds/Packages - Install/Gaia/TerrainCollisionData/Terrain_0_0-20240319
-      - 113413/Terrain_0_0-20240319 - 113413_LayerGameObject_3584_0,5
-    fullPath: C:/Users/bazan/Documents/GitHub/lost-woods/Assets/Procedural Worlds/Packages
-      - Install/Gaia/TerrainCollisionData/Terrain_0_0-20240319 - 113413/Terrain_0_0-20240319
-      - 113413_LayerGameObject_3584_0,5
     texture: {fileID: 0}
   m_worldBiomeMaskSettings: {fileID: 0}
