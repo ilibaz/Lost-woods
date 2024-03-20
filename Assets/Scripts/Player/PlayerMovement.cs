@@ -7,6 +7,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float rotationInterpolationSpeed = 25f;
     [SerializeField] float runSpeed = 500f;
     [SerializeField] float jumpForce = 3f;
+    [SerializeField] float groundDistance = 0.05f;
     [SerializeField] Transform groundCheckOrigin;
     [SerializeField] LayerMask groundMask;
 
@@ -22,10 +23,8 @@ public class PlayerMovement : MonoBehaviour
     public bool isGrounded = false;
     public bool canMove = true;
     bool isJumping = false;
-    bool fireTriggerLanded = false;
-    float groundDistance = 0.5f;
     float jumpCoolDown = 0.5f;
-    float timeSinceLastJump = 0f;
+    float timeOfLastJump = 0f;
 
 
     void Awake()
@@ -33,6 +32,7 @@ public class PlayerMovement : MonoBehaviour
         inputActions = new MainInputActions();
         animationController = GetComponent<Animator>();
         rigidBody = GetComponent<Rigidbody>();
+        timeOfLastJump = Time.time;
     }
 
     void Update()
@@ -62,8 +62,7 @@ public class PlayerMovement : MonoBehaviour
         if (inputActions.General.Jump.WasPressedThisFrame() && CanJump())
         {
             isJumping = true;
-            fireTriggerLanded = true;
-            timeSinceLastJump = Time.time;
+            timeOfLastJump = Time.time;
         }
 
         UpdateAnimator();
@@ -108,7 +107,7 @@ public class PlayerMovement : MonoBehaviour
 
     bool JumpCooldownHasPassed()
     {
-        return timeSinceLastJump < Time.time - jumpCoolDown;
+        return timeOfLastJump < Time.time - jumpCoolDown;
     }
 
     void CheckIsGrounded()
@@ -120,14 +119,9 @@ public class PlayerMovement : MonoBehaviour
     void UpdateAnimator()
     {
         animationController.SetBool("Running", inputMovementVector.magnitude > 0);
+        animationController.SetBool("IsLanded", isGrounded);
 
         if (isJumping) { animationController.SetTrigger("Jump"); }
-
-        if (isGrounded && JumpCooldownHasPassed() && fireTriggerLanded)
-        {
-            animationController.SetTrigger("Landed");
-            fireTriggerLanded = false;
-        }
     }
 
     void OnEnable()
