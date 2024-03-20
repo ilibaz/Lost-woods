@@ -146,6 +146,10 @@ public class PlayerMovement : MonoBehaviour
         {
             canMove = false;
         }
+        else
+        {
+            canMove = true;
+        }
     }
 
     void OnCollisionExit(Collision collisionInfo)
