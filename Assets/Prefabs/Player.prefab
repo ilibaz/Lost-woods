@@ -765,6 +765,37 @@ Transform:
   - {fileID: 5684577634116535193}
   m_Father: {fileID: 3372884588879335172}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1101288295640095074
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1490065838375681385}
+  m_Layer: 0
+  m_Name: GroundCheck
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1490065838375681385
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1101288295640095074}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4274534881798863665}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1124774414129078050
 GameObject:
   m_ObjectHideFlags: 0
@@ -1234,7 +1265,7 @@ GameObject:
   - component: {fileID: 7804515584319866195}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1255,6 +1286,7 @@ Transform:
   - {fileID: 1468698691150646256}
   - {fileID: 3279336959274524387}
   - {fileID: 4147155884868158948}
+  - {fileID: 1490065838375681385}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &3082732112991947893
@@ -1286,7 +1318,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1773697710143560774}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 8e7aba1735b5484489be6c83e4f4980b, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -1309,7 +1341,7 @@ Rigidbody:
   m_GameObject: {fileID: 1773697710143560774}
   serializedVersion: 4
   m_Mass: 1
-  m_Drag: 0
+  m_Drag: 0.05
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
@@ -1339,7 +1371,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48af84dcf2842ec44a80aa6e3ff8e545, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 250
+  rotationInterpolationSpeed: 35
+  runSpeed: 375
+  jumpForce: 5
+  groundDistance: 0.15
+  groundCheckOrigin: {fileID: 1490065838375681385}
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 64
+  isGrounded: 0
+  canMove: 1
 --- !u!1 &1846831196923020970
 GameObject:
   m_ObjectHideFlags: 0
