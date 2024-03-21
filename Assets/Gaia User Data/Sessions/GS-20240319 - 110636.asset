@@ -1069,6 +1069,193 @@ MonoBehaviour:
     sessionPlaybackState: 1
     m_terrainsFoldedOut: 0
     m_serializedExternalAction: 
+  - m_description: Spawning - Synty Texture Spawner(Clone)
+    m_operationType: 7
+    m_isActive: 1
+    m_affectedTerrainNames:
+    - Terrain_0_0-20240321 - 091506
+    m_operationDateTime: 21.03.2024 10:30:04
+    scriptableObjectAssetGUID: eeb5159e2903fda408a7e47a93800dd5
+    m_isFoldedOut: 0
+    sessionPlaybackState: 1
+    m_terrainsFoldedOut: 0
+    m_serializedExternalAction: 
+  - m_description: Spawning - Synty Texture Spawner(Clone)
+    m_operationType: 7
+    m_isActive: 1
+    m_affectedTerrainNames:
+    - Terrain_0_0-20240321 - 091506
+    m_operationDateTime: 21.03.2024 10:33:04
+    scriptableObjectAssetGUID: bf59b7cad0acf9c4e9b07ed886b1c41a
+    m_isFoldedOut: 0
+    sessionPlaybackState: 1
+    m_terrainsFoldedOut: 0
+    m_serializedExternalAction: 
+  - m_description: Spawning - Synty Texture Spawner(Clone)
+    m_operationType: 7
+    m_isActive: 1
+    m_affectedTerrainNames:
+    - Terrain_0_0-20240321 - 091506
+    m_operationDateTime: 21.03.2024 10:33:09
+    scriptableObjectAssetGUID: 355f70a60b03e7d478a7d14ea09d67c7
+    m_isFoldedOut: 0
+    sessionPlaybackState: 1
+    m_terrainsFoldedOut: 0
+    m_serializedExternalAction: 
+  - m_description: Spawning - Synty Texture Spawner(Clone)
+    m_operationType: 7
+    m_isActive: 1
+    m_affectedTerrainNames:
+    - Terrain_0_0-20240321 - 091506
+    m_operationDateTime: 21.03.2024 10:33:14
+    scriptableObjectAssetGUID: ab6030a8d551a6e45933683a756fec73
+    m_isFoldedOut: 0
+    sessionPlaybackState: 1
+    m_terrainsFoldedOut: 0
+    m_serializedExternalAction: 
+  - m_description: Spawning - Synty Texture Spawner(Clone)
+    m_operationType: 7
+    m_isActive: 1
+    m_affectedTerrainNames:
+    - Terrain_0_0-20240321 - 091506
+    m_operationDateTime: 21.03.2024 10:33:28
+    scriptableObjectAssetGUID: 43fbf1260ba5d6f42aee1bce1c1bd928
+    m_isFoldedOut: 0
+    sessionPlaybackState: 1
+    m_terrainsFoldedOut: 0
+    m_serializedExternalAction: 
+  - m_description: Spawning - Synty Texture Spawner(Clone)
+    m_operationType: 7
+    m_isActive: 1
+    m_affectedTerrainNames:
+    - Terrain_0_0-20240321 - 091506
+    m_operationDateTime: 21.03.2024 10:33:37
+    scriptableObjectAssetGUID: 61f1cdc9a7399e4469ad21a748ce9bd0
+    m_isFoldedOut: 0
+    sessionPlaybackState: 1
+    m_terrainsFoldedOut: 0
+    m_serializedExternalAction: 
+  - m_description: Spawning - Synty Texture Spawner(Clone)
+    m_operationType: 7
+    m_isActive: 1
+    m_affectedTerrainNames:
+    - Terrain_0_0-20240321 - 091506
+    m_operationDateTime: 21.03.2024 10:33:50
+    scriptableObjectAssetGUID: b89cc0b45f67b0b49b0fd7a1a70faa54
+    m_isFoldedOut: 0
+    sessionPlaybackState: 1
+    m_terrainsFoldedOut: 0
+    m_serializedExternalAction: 
+  - m_description: Spawning - Synty Texture Spawner(Clone)
+    m_operationType: 7
+    m_isActive: 1
+    m_affectedTerrainNames:
+    - Terrain_0_0-20240321 - 091506
+    m_operationDateTime: 21.03.2024 10:33:56
+    scriptableObjectAssetGUID: db546e69cdfee3743868089ead673e5f
+    m_isFoldedOut: 0
+    sessionPlaybackState: 1
+    m_terrainsFoldedOut: 0
+    m_serializedExternalAction: 
+  - m_description: Spawning - Synty Texture Spawner(Clone)
+    m_operationType: 7
+    m_isActive: 1
+    m_affectedTerrainNames:
+    - Terrain_0_0-20240321 - 091506
+    m_operationDateTime: 21.03.2024 10:34:04
+    scriptableObjectAssetGUID: 4575702404503804c9851cd3dff7ea13
+    m_isFoldedOut: 0
+    sessionPlaybackState: 1
+    m_terrainsFoldedOut: 0
+    m_serializedExternalAction: 
+  - m_description: Spawning - Synty Texture Spawner(Clone)
+    m_operationType: 7
+    m_isActive: 1
+    m_affectedTerrainNames:
+    - Terrain_0_0-20240321 - 091506
+    m_operationDateTime: 21.03.2024 10:34:27
+    scriptableObjectAssetGUID: 04fd9613329d7224f8cdb3e5abfc73cd
+    m_isFoldedOut: 0
+    sessionPlaybackState: 1
+    m_terrainsFoldedOut: 0
+    m_serializedExternalAction: 
+  - m_description: Spawning - Synty Texture Spawner(Clone)
+    m_operationType: 7
+    m_isActive: 1
+    m_affectedTerrainNames:
+    - Terrain_0_0-20240321 - 091506
+    m_operationDateTime: 21.03.2024 10:34:48
+    scriptableObjectAssetGUID: 33a755d649c30e8449b6959d5683b648
+    m_isFoldedOut: 0
+    sessionPlaybackState: 1
+    m_terrainsFoldedOut: 0
+    m_serializedExternalAction: 
+  - m_description: Spawning - Synty Texture Spawner(Clone)
+    m_operationType: 7
+    m_isActive: 1
+    m_affectedTerrainNames:
+    - Terrain_0_0-20240321 - 091506
+    m_operationDateTime: 21.03.2024 10:34:52
+    scriptableObjectAssetGUID: 9f856ab838fa9ef4ba31cfe65d0cf11c
+    m_isFoldedOut: 0
+    sessionPlaybackState: 1
+    m_terrainsFoldedOut: 0
+    m_serializedExternalAction: 
+  - m_description: Spawning - Synty Texture Spawner(Clone)
+    m_operationType: 7
+    m_isActive: 1
+    m_affectedTerrainNames:
+    - Terrain_0_0-20240321 - 091506
+    m_operationDateTime: 21.03.2024 10:34:57
+    scriptableObjectAssetGUID: e1d3be8ea3eab5c43ac109c088a3eb63
+    m_isFoldedOut: 0
+    sessionPlaybackState: 1
+    m_terrainsFoldedOut: 0
+    m_serializedExternalAction: 
+  - m_description: Spawning - Synty Texture Spawner(Clone)
+    m_operationType: 7
+    m_isActive: 1
+    m_affectedTerrainNames:
+    - Terrain_0_0-20240321 - 091506
+    m_operationDateTime: 21.03.2024 10:35:15
+    scriptableObjectAssetGUID: 5bb9c7fe87bda5e4fb644ffeb29dd099
+    m_isFoldedOut: 0
+    sessionPlaybackState: 1
+    m_terrainsFoldedOut: 0
+    m_serializedExternalAction: 
+  - m_description: Spawning - Synty Texture Spawner(Clone)
+    m_operationType: 7
+    m_isActive: 1
+    m_affectedTerrainNames:
+    - Terrain_0_0-20240321 - 091506
+    m_operationDateTime: 21.03.2024 10:35:37
+    scriptableObjectAssetGUID: 46a88e89e54a6634ebe5ee72dd8b202b
+    m_isFoldedOut: 0
+    sessionPlaybackState: 1
+    m_terrainsFoldedOut: 0
+    m_serializedExternalAction: 
+  - m_description: Spawning - Synty Texture Spawner(Clone)
+    m_operationType: 7
+    m_isActive: 1
+    m_affectedTerrainNames:
+    - Terrain_0_0-20240321 - 091506
+    m_operationDateTime: 21.03.2024 10:35:42
+    scriptableObjectAssetGUID: 7f4d0f8da546a9740b3c993ba1cacaef
+    m_isFoldedOut: 0
+    sessionPlaybackState: 1
+    m_terrainsFoldedOut: 0
+    m_serializedExternalAction: 
+  - m_description: Spawning - Synty Texture Spawner(Clone)
+    m_operationType: 7
+    m_isActive: 1
+    m_affectedTerrainNames:
+    - Terrain_0_0-20240321 - 091506
+    m_operationDateTime: 21.03.2024 10:35:46
+    scriptableObjectAssetGUID: 260a5082aaa92214981588ab13f91269
+    m_isFoldedOut: 0
+    sessionPlaybackState: 1
+    m_terrainsFoldedOut: 0
+    m_serializedExternalAction: 
   m_terrainMinMaxCache:
   - guid: 713bfa2753586ae4480c609ad558342f
     isWorldmap: 0
@@ -1082,7 +1269,7 @@ MonoBehaviour:
     max: 53.62582
   - guid: 3173b72a70561814692d05c867455fcb
     isWorldmap: 0
-    recalculate: 0
+    recalculate: 1
     min: 0
     max: 221.12837
   - guid: Worldmap
