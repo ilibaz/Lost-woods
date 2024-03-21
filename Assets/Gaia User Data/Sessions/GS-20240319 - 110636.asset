@@ -23,7 +23,7 @@ MonoBehaviour:
   m_terrainWidth: 512
   m_terrainDepth: 512
   m_terrainHeight: 512
-  m_seaLevel: 2.86
+  m_seaLevel: 6
   m_spawnDensity: 0.5
   m_isLocked: 0
   m_previewImageBytes: 
@@ -775,31 +775,243 @@ MonoBehaviour:
     sessionPlaybackState: 1
     m_terrainsFoldedOut: 0
     m_serializedExternalAction: 
+  - m_description: 'Updating World To: 1 x 1 tiles, tile size: 512'
+    m_operationType: 14
+    m_isActive: 1
+    m_affectedTerrainNames: []
+    m_operationDateTime: 21.03.2024 9:09:56
+    scriptableObjectAssetGUID: 7e651d20915817743b4eab3f88845671
+    m_isFoldedOut: 0
+    sessionPlaybackState: 1
+    m_terrainsFoldedOut: 0
+    m_serializedExternalAction: 
+  - m_description: Spawning - Multiple Spawners (3)
+    m_operationType: 7
+    m_isActive: 1
+    m_affectedTerrainNames:
+    - Terrain_0_0-20240319 - 113413
+    m_operationDateTime: 21.03.2024 9:10:54
+    scriptableObjectAssetGUID: 4683523c2ab5e6c40b02d03a50740160
+    m_isFoldedOut: 0
+    sessionPlaybackState: 1
+    m_terrainsFoldedOut: 0
+    m_serializedExternalAction: 
+  - m_description: Clearing - Trees Details GOs SpawnExt Probes, AllTerrains, AnySource
+    m_operationType: 3
+    m_isActive: 1
+    m_affectedTerrainNames:
+    - Terrain_0_0-20240319 - 113413
+    m_operationDateTime: 21.03.2024 9:11:16
+    scriptableObjectAssetGUID: 741466a58a968dc4589326b7e8edc01f
+    m_isFoldedOut: 0
+    sessionPlaybackState: 1
+    m_terrainsFoldedOut: 0
+    m_serializedExternalAction: 
+  - m_description: Clear World
+    m_operationType: 10
+    m_isActive: 1
+    m_affectedTerrainNames: []
+    m_operationDateTime: 21.03.2024 9:14:23
+    scriptableObjectAssetGUID: 
+    m_isFoldedOut: 0
+    sessionPlaybackState: 1
+    m_terrainsFoldedOut: 0
+    m_serializedExternalAction: 
+  - m_description: 'Creating World: 1 x 1 tiles, tile size: 1024'
+    m_operationType: 0
+    m_isActive: 1
+    m_affectedTerrainNames:
+    - Terrain_0_0-20240321 - 091423
+    m_operationDateTime: 21.03.2024 9:14:24
+    scriptableObjectAssetGUID: 9402c66c68ebd8d45bfeab5ec49f243c
+    m_isFoldedOut: 0
+    sessionPlaybackState: 1
+    m_terrainsFoldedOut: 0
+    m_serializedExternalAction: 
+  - m_description: Clear World
+    m_operationType: 10
+    m_isActive: 1
+    m_affectedTerrainNames: []
+    m_operationDateTime: 21.03.2024 9:15:06
+    scriptableObjectAssetGUID: 
+    m_isFoldedOut: 0
+    sessionPlaybackState: 1
+    m_terrainsFoldedOut: 0
+    m_serializedExternalAction: 
+  - m_description: 'Creating World: 1 x 1 tiles, tile size: 1024'
+    m_operationType: 0
+    m_isActive: 1
+    m_affectedTerrainNames:
+    - Terrain_0_0-20240321 - 091506
+    m_operationDateTime: 21.03.2024 9:15:06
+    scriptableObjectAssetGUID: d36a412651da4434789129726866d085
+    m_isFoldedOut: 0
+    sessionPlaybackState: 1
+    m_terrainsFoldedOut: 0
+    m_serializedExternalAction: 
+  - m_description: RaiseHeight - 2k Plains 3
+    m_operationType: 4
+    m_isActive: 1
+    m_affectedTerrainNames:
+    - Terrain_0_0-20240321 - 091506
+    m_operationDateTime: 21.03.2024 9:26:36
+    scriptableObjectAssetGUID: 2e20a7cc81382ad4f92894cf4f0cf473
+    m_isFoldedOut: 0
+    sessionPlaybackState: 1
+    m_terrainsFoldedOut: 0
+    m_serializedExternalAction: 
+  - m_description: Spawning - Synty Texture Spawner(Clone)
+    m_operationType: 7
+    m_isActive: 1
+    m_affectedTerrainNames:
+    - Terrain_0_0-20240321 - 091506
+    m_operationDateTime: 21.03.2024 9:26:38
+    scriptableObjectAssetGUID: ced630f5cf0ce3f4984bca8ae2111e87
+    m_isFoldedOut: 0
+    sessionPlaybackState: 1
+    m_terrainsFoldedOut: 0
+    m_serializedExternalAction: 
+  - m_description: RaiseHeight - 2k Plains 3
+    m_operationType: 4
+    m_isActive: 1
+    m_affectedTerrainNames:
+    - Terrain_0_0-20240321 - 091506
+    m_operationDateTime: 21.03.2024 9:28:23
+    scriptableObjectAssetGUID: bac130649e2f78040b4e9e0a819a99ee
+    m_isFoldedOut: 0
+    sessionPlaybackState: 1
+    m_terrainsFoldedOut: 0
+    m_serializedExternalAction: 
+  - m_description: Spawning - Synty Texture Spawner(Clone)
+    m_operationType: 7
+    m_isActive: 1
+    m_affectedTerrainNames:
+    - Terrain_0_0-20240321 - 091506
+    m_operationDateTime: 21.03.2024 9:28:24
+    scriptableObjectAssetGUID: ddd3fbec0d145794a9af175e8f2f2e1b
+    m_isFoldedOut: 0
+    sessionPlaybackState: 1
+    m_terrainsFoldedOut: 0
+    m_serializedExternalAction: 
+  - m_description: RaiseHeight - 2k Mountain 2
+    m_operationType: 4
+    m_isActive: 1
+    m_affectedTerrainNames:
+    - Terrain_0_0-20240321 - 091506
+    m_operationDateTime: 21.03.2024 9:32:36
+    scriptableObjectAssetGUID: 98d68d995f763e84fb976f9f830d83ef
+    m_isFoldedOut: 0
+    sessionPlaybackState: 1
+    m_terrainsFoldedOut: 0
+    m_serializedExternalAction: 
+  - m_description: Spawning - Synty Texture Spawner(Clone)
+    m_operationType: 7
+    m_isActive: 1
+    m_affectedTerrainNames:
+    - Terrain_0_0-20240321 - 091506
+    m_operationDateTime: 21.03.2024 9:32:38
+    scriptableObjectAssetGUID: 617698155694f764aa8ecdda1a0c3e96
+    m_isFoldedOut: 0
+    sessionPlaybackState: 1
+    m_terrainsFoldedOut: 0
+    m_serializedExternalAction: 
+  - m_description: Undo - 1 Terrains
+    m_operationType: 5
+    m_isActive: 1
+    m_affectedTerrainNames:
+    - Terrain_0_0-20240321 - 091506
+    m_operationDateTime: 21.03.2024 9:32:54
+    scriptableObjectAssetGUID: 4b50d6b90091d1f4fade6c828f24d6c3
+    m_isFoldedOut: 0
+    sessionPlaybackState: 1
+    m_terrainsFoldedOut: 0
+    m_serializedExternalAction: 
+  - m_description: Undo - 1 Terrains
+    m_operationType: 5
+    m_isActive: 1
+    m_affectedTerrainNames:
+    - Terrain_0_0-20240321 - 091506
+    m_operationDateTime: 21.03.2024 9:32:57
+    scriptableObjectAssetGUID: 70b099eaaa8575f4f9693e3f8a3a2967
+    m_isFoldedOut: 0
+    sessionPlaybackState: 1
+    m_terrainsFoldedOut: 0
+    m_serializedExternalAction: 
+  - m_description: RaiseHeight - 2k Mountain 2
+    m_operationType: 4
+    m_isActive: 1
+    m_affectedTerrainNames:
+    - Terrain_0_0-20240321 - 091506
+    m_operationDateTime: 21.03.2024 9:34:31
+    scriptableObjectAssetGUID: 6a5c115654f436f4b9bd354eb19e9b85
+    m_isFoldedOut: 0
+    sessionPlaybackState: 1
+    m_terrainsFoldedOut: 0
+    m_serializedExternalAction: 
+  - m_description: Spawning - Synty Texture Spawner(Clone)
+    m_operationType: 7
+    m_isActive: 1
+    m_affectedTerrainNames:
+    - Terrain_0_0-20240321 - 091506
+    m_operationDateTime: 21.03.2024 9:34:33
+    scriptableObjectAssetGUID: 4c8aa4885aabb0049b2bb4fe813ca9d4
+    m_isFoldedOut: 0
+    sessionPlaybackState: 1
+    m_terrainsFoldedOut: 0
+    m_serializedExternalAction: 
+  - m_description: RaiseHeight - 2k Plains 5
+    m_operationType: 4
+    m_isActive: 1
+    m_affectedTerrainNames:
+    - Terrain_0_0-20240321 - 091506
+    m_operationDateTime: 21.03.2024 9:36:33
+    scriptableObjectAssetGUID: da1800a606d21bb48ba12958306dd526
+    m_isFoldedOut: 0
+    sessionPlaybackState: 1
+    m_terrainsFoldedOut: 0
+    m_serializedExternalAction: 
+  - m_description: Spawning - Synty Texture Spawner(Clone)
+    m_operationType: 7
+    m_isActive: 1
+    m_affectedTerrainNames:
+    - Terrain_0_0-20240321 - 091506
+    m_operationDateTime: 21.03.2024 9:36:35
+    scriptableObjectAssetGUID: e06ed411b524a3b4186a4ebe79517d0a
+    m_isFoldedOut: 0
+    sessionPlaybackState: 1
+    m_terrainsFoldedOut: 0
+    m_serializedExternalAction: 
+  - m_description: Spawning - Synty Texture Spawner(Clone)
+    m_operationType: 7
+    m_isActive: 1
+    m_affectedTerrainNames:
+    - Terrain_0_0-20240321 - 091506
+    m_operationDateTime: 21.03.2024 9:38:31
+    scriptableObjectAssetGUID: 5e02d76e219315f47a1844bb459a7678
+    m_isFoldedOut: 0
+    sessionPlaybackState: 1
+    m_terrainsFoldedOut: 0
+    m_serializedExternalAction: 
   m_terrainMinMaxCache:
-  - guid: 27d24213447878d4fbce42fa324504fb
-    isWorldmap: 0
-    recalculate: 0
-    min: 0
-    max: 30.078585
-  - guid: f3bd6f2398c98474183b725c7b2f3c05
-    isWorldmap: 0
-    recalculate: 0
-    min: 0
-    max: 30.078585
-  - guid: 54c5b2050e87318449491ffb1cf31193
-    isWorldmap: 0
-    recalculate: 0
-    min: 0
-    max: 30.078585
   - guid: 713bfa2753586ae4480c609ad558342f
     isWorldmap: 0
     recalculate: 0
     min: 0
     max: 30.06296
+  - guid: 726ad6e7d2d53b24d858f37a8ffa409d
+    isWorldmap: 0
+    recalculate: 0
+    min: 0
+    max: 53.62582
   - guid: Worldmap
     isWorldmap: 1
     recalculate: 0
     min: 0
-    max: 0
+    max: 90.54393
+  - guid: 3173b72a70561814692d05c867455fcb
+    isWorldmap: 0
+    recalculate: 0
+    min: 0
+    max: 221.12837
   m_bakedMaskCacheEntries: []
   m_worldBiomeMaskSettings: {fileID: 0}
