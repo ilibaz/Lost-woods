@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,7 +12,9 @@ public class PlayerMovementView : MonoBehaviour
         animationController = GetComponent<Animator>();
         PlayerMovementController.Instance.OnJump += UpdateAnimatorJump;
         PlayerMovementController.Instance.OnLanded += UpdateAnimatorIsLanded;
+        PlayerPickUpManager.Instance.OnEquipTorch += UpdateAnimatorGrabTorch;
     }
+
 
     void Update()
     {
@@ -34,4 +37,11 @@ public class PlayerMovementView : MonoBehaviour
     {
         animationController.SetBool("IsLanded", true);
     }
+
+    void UpdateAnimatorGrabTorch()
+    {
+        animationController.SetTrigger("GrabTorch");
+        animationController.SetBool("HasTorch", true);
+    }
+
 }

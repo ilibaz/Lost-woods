@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 5757887864413390935}
   - component: {fileID: 5041594416778637922}
   - component: {fileID: 1678776129315447152}
-  - component: {fileID: 4824452162079699568}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -158,20 +157,3 @@ MonoBehaviour:
   obstacleMask:
     serializedVersion: 2
     m_Bits: 64
---- !u!114 &4824452162079699568
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7731774725981551214}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f2189c0bafe64f942beb09bd4969353b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_profile: {fileID: 0}
-  m_applyToGameCamera: 1
-  m_directionalLight: {fileID: 0}
-  m_moonLight: {fileID: 0}
-  m_applyToSceneCamera: 1

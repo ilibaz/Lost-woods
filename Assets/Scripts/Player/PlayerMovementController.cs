@@ -46,6 +46,7 @@ public class PlayerMovementController : MonoBehaviour
     public Vector2 inputMovementVector { get; private set; }
     public bool isGrounded { get; private set; }
     public bool isJumping { get; private set; }
+    public bool canMove;
     float jumpCoolDown = 0.5f;
     float timeOfLastJump = 0f;
     float previousGroundDistance = 0f;
@@ -55,40 +56,50 @@ public class PlayerMovementController : MonoBehaviour
     {
         inputActions = new MainInputActions();
         rigidBody = GetComponent<Rigidbody>();
+    }
+
+    void Start()
+    {
         timeOfLastJump = Time.time;
+        canMove = true;
+
+        PlayerPickUpManager.Instance.OnEquipTorch += DisableMovementWhileInteracting;
     }
 
     void Update()
     {
-        SaveCameraDirections();
-        inputMovementVector = inputActions.General.Movement.ReadValue<Vector2>();
-
-        if (inputMovementVector.magnitude > 0.1f)
+        if (canMove)
         {
-            // Calculate the movement direction based on input and character's orientation
-            Vector3 movementDirection = new Vector3(inputMovementVector.x, 0, inputMovementVector.y);
+            SaveCameraDirections();
+            inputMovementVector = inputActions.General.Movement.ReadValue<Vector2>();
 
-            // Calculate the rotation to face the movement direction while aligning with the camera's forward direction
-            Quaternion targetRotation = Quaternion.LookRotation(movementDirection, Vector3.up) * Quaternion.Euler(0f, Camera.main.transform.eulerAngles.y, 0f);
-
-            // Apply the rotation
-            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * rotationInterpolationSpeed);
-        }
-        else
-        {
-            Quaternion targetRotation = Quaternion.LookRotation(cameraForward);
-            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * rotationInterpolationSpeed);
-        }
-
-        if (inputActions.General.Jump.WasPressedThisFrame() && CanJump())
-        {
-            isJumping = true;
-            timeOfLastJump = Time.time;
-            rigidBody.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-
-            if (OnJump != null)
+            if (inputMovementVector.magnitude > 0.1f)
             {
-                OnJump.Invoke();
+                // Calculate the movement direction based on input and character's orientation
+                Vector3 movementDirection = new Vector3(inputMovementVector.x, 0, inputMovementVector.y);
+
+                // Calculate the rotation to face the movement direction while aligning with the camera's forward direction
+                Quaternion targetRotation = Quaternion.LookRotation(movementDirection, Vector3.up) * Quaternion.Euler(0f, Camera.main.transform.eulerAngles.y, 0f);
+
+                // Apply the rotation
+                transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * rotationInterpolationSpeed);
+            }
+            else
+            {
+                Quaternion targetRotation = Quaternion.LookRotation(cameraForward);
+                transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * rotationInterpolationSpeed);
+            }
+
+            if (inputActions.General.Jump.WasPressedThisFrame() && CanJump())
+            {
+                isJumping = true;
+                timeOfLastJump = Time.time;
+                rigidBody.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+
+                if (OnJump != null)
+                {
+                    OnJump.Invoke();
+                }
             }
         }
 
@@ -168,6 +179,19 @@ public class PlayerMovementController : MonoBehaviour
         }
 
         Debug.DrawRay(groundCheckOrigin.position, Vector3.down, Color.red, groundCheckDistance);
+    }
+
+    void DisableMovementWhileInteracting()
+    {
+        canMove = false;
+
+        StartCoroutine(EnableMovementAfter(0.75f));
+    }
+
+    IEnumerator EnableMovementAfter(float t)
+    {
+        yield return new WaitForSeconds(t);
+        canMove = true;
     }
 
     void OnEnable()
