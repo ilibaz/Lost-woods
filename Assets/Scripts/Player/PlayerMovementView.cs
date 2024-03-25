@@ -12,7 +12,7 @@ public class PlayerMovementView : MonoBehaviour
         animationController = GetComponent<Animator>();
         PlayerMovementController.Instance.OnJump += UpdateAnimatorJump;
         PlayerMovementController.Instance.OnLanded += UpdateAnimatorIsLanded;
-        PlayerPickUpManager.Instance.OnEquipTorch += UpdateAnimatorGrabTorch;
+        PlayerPickUpManager.Instance.OnPickUpItem += UpdateAnimatorPickUpTorch;
     }
 
 
@@ -38,10 +38,10 @@ public class PlayerMovementView : MonoBehaviour
         animationController.SetBool("IsLanded", true);
     }
 
-    void UpdateAnimatorGrabTorch()
+    void UpdateAnimatorPickUpTorch()
     {
-        animationController.SetTrigger("GrabTorch");
-        animationController.SetBool("HasTorch", true);
+        animationController.SetTrigger("PickUp");
+        animationController.SetBool("LeftHandTorchEquped", true);
     }
 
 }

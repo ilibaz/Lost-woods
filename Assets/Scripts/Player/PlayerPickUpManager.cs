@@ -31,7 +31,7 @@ public class PlayerPickUpManager : MonoBehaviour
     [SerializeField] GameObject playerLeftArmTorch;
 
 
-    public event Action OnEquipTorch;
+    public event Action OnPickUpItem;
 
     PickableItem currentPickableItem;
 
@@ -49,10 +49,10 @@ public class PlayerPickUpManager : MonoBehaviour
             if (currentPickableItem.autoEquibale)
             {
                 // just torch equip for now
-                if (OnEquipTorch != null)
+                if (OnPickUpItem != null)
                 {
-                    OnEquipTorch.Invoke();
-                    StartCoroutine(ShowTorchAfter(0.75f));
+                    OnPickUpItem.Invoke();
+                    StartCoroutine(ShowTorchAfter(PlayerMovementController.Instance.pickUpMovementCooldown));
                 }
             }
 

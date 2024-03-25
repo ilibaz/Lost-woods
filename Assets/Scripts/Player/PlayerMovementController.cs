@@ -43,13 +43,14 @@ public class PlayerMovementController : MonoBehaviour
     // Movement
     public event Action OnJump;
     public event Action OnLanded;
-    public Vector2 inputMovementVector { get; private set; }
-    public bool isGrounded { get; private set; }
-    public bool isJumping { get; private set; }
+    public Vector2 inputMovementVector { get; private set; } = new Vector2();
+    public bool isGrounded { get; private set; } = false;
+    public bool isJumping { get; private set; } = false;
     public bool canMove;
     float jumpCoolDown = 0.5f;
     float timeOfLastJump = 0f;
     float previousGroundDistance = 0f;
+    public float pickUpMovementCooldown { get; private set; } = 0.75f;
 
 
     void Awake()
@@ -63,7 +64,7 @@ public class PlayerMovementController : MonoBehaviour
         timeOfLastJump = Time.time;
         canMove = true;
 
-        PlayerPickUpManager.Instance.OnEquipTorch += DisableMovementWhileInteracting;
+        PlayerPickUpManager.Instance.OnPickUpItem += DisableMovementWhilePickingUp;
     }
 
     void Update()
@@ -181,11 +182,11 @@ public class PlayerMovementController : MonoBehaviour
         Debug.DrawRay(groundCheckOrigin.position, Vector3.down, Color.red, groundCheckDistance);
     }
 
-    void DisableMovementWhileInteracting()
+    void DisableMovementWhilePickingUp()
     {
         canMove = false;
 
-        StartCoroutine(EnableMovementAfter(0.75f));
+        StartCoroutine(EnableMovementAfter(pickUpMovementCooldown));
     }
 
     IEnumerator EnableMovementAfter(float t)
