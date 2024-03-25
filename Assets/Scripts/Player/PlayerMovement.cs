@@ -21,8 +21,6 @@ public class PlayerMovement : MonoBehaviour
     // Movement
     Vector2 inputMovementVector = new Vector2();
     public bool isGrounded = false;
-    public bool canMove = true;
-    bool isJumping = false;
     float jumpCoolDown = 0.5f;
     float timeOfLastJump = 0f;
 
@@ -40,9 +38,10 @@ public class PlayerMovement : MonoBehaviour
         SaveCameraDirections();
         CheckIsGrounded();
 
+        bool hasJumped = false;
         inputMovementVector = inputActions.General.Movement.ReadValue<Vector2>();
 
-        if (canMove && inputMovementVector.magnitude > 0.1f)
+        if (inputMovementVector.magnitude > 0.1f)
         {
             // Calculate the movement direction based on input and character's orientation
             Vector3 movementDirection = new Vector3(inputMovementVector.x, 0, inputMovementVector.y);
@@ -61,16 +60,17 @@ public class PlayerMovement : MonoBehaviour
 
         if (inputActions.General.Jump.WasPressedThisFrame() && CanJump())
         {
-            isJumping = true;
             timeOfLastJump = Time.time;
+            hasJumped = true;
+            rigidBody.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
         }
 
-        UpdateAnimator();
+        UpdateAnimator(hasJumped);
     }
 
     void FixedUpdate()
     {
-        if (canMove && inputMovementVector.magnitude > 0.1f)
+        if (inputMovementVector.magnitude > 0.1f)
         {
             Vector3 movementDirection = cameraForward * inputMovementVector.y + cameraRight * inputMovementVector.x;
             float rbVelocityY = rigidBody.velocity.y;
@@ -80,12 +80,6 @@ public class PlayerMovement : MonoBehaviour
         else
         {
             rigidBody.velocity = new Vector3(0f, rigidBody.velocity.y, 0f);
-        }
-
-        if (isJumping)
-        {
-            rigidBody.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-            isJumping = false;
         }
     }
 
@@ -102,12 +96,7 @@ public class PlayerMovement : MonoBehaviour
 
     bool CanJump()
     {
-        return isGrounded && JumpCooldownHasPassed();
-    }
-
-    bool JumpCooldownHasPassed()
-    {
-        return timeOfLastJump < Time.time - jumpCoolDown;
+        return isGrounded && timeOfLastJump < Time.time - jumpCoolDown;
     }
 
     void CheckIsGrounded()
@@ -116,12 +105,15 @@ public class PlayerMovement : MonoBehaviour
         Debug.DrawRay(groundCheckOrigin.position, Vector3.down, Color.red, groundDistance);
     }
 
-    void UpdateAnimator()
+    void UpdateAnimator(bool hasJumped)
     {
         animationController.SetBool("Running", inputMovementVector.magnitude > 0);
         animationController.SetBool("IsLanded", isGrounded);
 
-        if (isJumping) { animationController.SetTrigger("Jump"); }
+        if (hasJumped)
+        {
+            animationController.SetTrigger("Jump");
+        }
     }
 
     void OnEnable()
@@ -132,22 +124,5 @@ public class PlayerMovement : MonoBehaviour
     void OnDisable()
     {
         inputActions.General.Disable();
-    }
-
-    void OnCollisionStay(Collision collisionInfo)
-    {
-        if (!isGrounded)
-        {
-            canMove = false;
-        }
-        else
-        {
-            canMove = true;
-        }
-    }
-
-    void OnCollisionExit(Collision collisionInfo)
-    {
-        canMove = true;
     }
 }
