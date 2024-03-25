@@ -28,7 +28,8 @@ public class PlayerPickUpManager : MonoBehaviour
     }
 
     [SerializeField] GameObject pickUpCollider;
-    [SerializeField] GameObject playerLeftArmTorch;
+    [SerializeField] Transform playerLeftArmHand;
+    [SerializeField] Transform playerRightArmHand;
 
 
     public event Action OnPickUpItem;
@@ -46,19 +47,7 @@ public class PlayerPickUpManager : MonoBehaviour
     {
         if (inputActions.General.Interact.WasPerformedThisFrame())
         {
-            if (currentPickableItem.autoEquibale)
-            {
-                // just torch equip for now
-                if (OnPickUpItem != null)
-                {
-                    OnPickUpItem.Invoke();
-                    StartCoroutine(ShowTorchAfter(PlayerMovementController.Instance.pickUpMovementCooldown));
-                }
-            }
-
-            UIManager.Instance.ClearInteractiveAction();
-            currentPickableItem.PickUp();
-            currentPickableItem = null;
+            PickUpItem();
         }
     }
 
@@ -90,10 +79,74 @@ public class PlayerPickUpManager : MonoBehaviour
         }
     }
 
-    IEnumerator ShowTorchAfter(float t)
+    void PickUpItem()
     {
+        if (OnPickUpItem != null)
+        {
+            OnPickUpItem.Invoke();
+        }
+
+        if (currentPickableItem.autoEquibale)
+        {
+            if (currentPickableItem.leftHanded)
+            {
+                StartCoroutine(EquipItemToLeftHandAfter(currentPickableItem, PlayerMovementController.Instance.pickUpMovementCooldown));
+            }
+            else
+            {
+                StartCoroutine(EquipItemToRightHandAfter(currentPickableItem, PlayerMovementController.Instance.pickUpMovementCooldown));
+            }
+        }
+        else
+        {
+            // put it to inventory
+        }
+
+        UIManager.Instance.ClearInteractiveAction();
+        currentPickableItem.PickUp();
+        currentPickableItem = null;
+    }
+
+    IEnumerator EquipItemToLeftHandAfter(PickableItem item, float t)
+    {
+        EquipToHand(playerLeftArmHand, item);
         yield return new WaitForSeconds(t);
-        playerLeftArmTorch.SetActive(true);
+        item.gameObject.SetActive(true);
+        EnableLights(item.gameObject);
+    }
+
+    IEnumerator EquipItemToRightHandAfter(PickableItem item, float t)
+    {
+        EquipToHand(playerRightArmHand, item);
+        yield return new WaitForSeconds(t);
+        item.gameObject.SetActive(true);
+        EnableLights(item.gameObject);
+    }
+
+    void EquipToHand(Transform hand, PickableItem item)
+    {
+        item.gameObject.SetActive(false);
+        item.transform.SetParent(hand);
+
+        item.transform.localPosition = item.positionAfterPickUp;
+        item.transform.localRotation = Quaternion.identity;
+        item.transform.localRotation *= Quaternion.Euler(item.rotationAfterPickUp);
+
+        Rigidbody itemRb;
+        item.TryGetComponent<Rigidbody>(out itemRb);
+        if (itemRb)
+        {
+            Destroy(itemRb);
+        }
+    }
+
+    void EnableLights(GameObject item)
+    {
+        Light[] lights = item.GetComponentsInChildren<Light>();
+        foreach (Light light in lights)
+        {
+            light.enabled = true;
+        }
     }
 
     void OnEnable()

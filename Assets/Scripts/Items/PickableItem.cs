@@ -6,6 +6,9 @@ public class PickableItem : MonoBehaviour
 {
     [SerializeField] string itemName = "Name";
     [SerializeField] public bool autoEquibale;
+    [SerializeField] public bool leftHanded;
+    [SerializeField] public Vector3 positionAfterPickUp;
+    [SerializeField] public Vector3 rotationAfterPickUp;
 
     public InteractiveAction action;
 
@@ -24,6 +27,6 @@ public class PickableItem : MonoBehaviour
 
     public void PickUp()
     {
-        Destroy(gameObject);
+        // spawn particle system if needed
     }
 }

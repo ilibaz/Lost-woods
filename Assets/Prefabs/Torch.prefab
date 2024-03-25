@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4954535555998012927}
   - component: {fileID: 2131812423678113833}
   - component: {fileID: 3287150558696010085}
+  - component: {fileID: 8825217184496159919}
   m_Layer: 0
   m_Name: Torch
   m_TagString: Untagged
@@ -137,6 +138,22 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.09152211, y: 0.8159409, z: 0.10568059}
   m_Center: {x: -0.00003056775, y: 0.033294432, z: -0.00000001788227}
+--- !u!114 &8825217184496159919
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4310988912971842137}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ddadad98427bc64094ffe3bbc64b854, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemName: Torch
+  autoEquibale: 1
+  positionAfterPickUp: {x: 0, y: 0, z: 0}
+  rotationAfterPickUp: {x: 90, y: 0, z: 0}
 --- !u!1 &7355825196212418331
 GameObject:
   m_ObjectHideFlags: 0
@@ -178,7 +195,7 @@ Light:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7355825196212418331}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 11
   m_Type: 2
   m_Color: {r: 0.93530995, g: 0.58876723, b: 0.3315182, a: 1}
