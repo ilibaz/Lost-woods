@@ -64,7 +64,7 @@ public class PlayerMovementController : MonoBehaviour
         timeOfLastJump = Time.time;
         canMove = true;
 
-        PlayerPickUpManager.Instance.OnPickUpItem += DisableMovementWhilePickingUp;
+        PlayerPickUpController.Instance.OnPickUpItem += DisableMovementWhilePickingUp;
     }
 
     void Update()
@@ -182,7 +182,7 @@ public class PlayerMovementController : MonoBehaviour
         Debug.DrawRay(groundCheckOrigin.position, Vector3.down, Color.red, groundCheckDistance);
     }
 
-    void DisableMovementWhilePickingUp()
+    void DisableMovementWhilePickingUp(ItemView item)
     {
         canMove = false;
 

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PickableItem : MonoBehaviour
+public class ItemView : MonoBehaviour
 {
     [SerializeField] string itemName = "Name";
     [SerializeField] public bool autoEquibale;
@@ -22,7 +22,7 @@ public class PickableItem : MonoBehaviour
 
         action = new InteractiveAction();
         action.itemName = itemName;
-        action.actionName = "Pick up";
+        action.actionType = ActionType.PickUp;
     }
 
     public void PickUp()

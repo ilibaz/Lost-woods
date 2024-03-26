@@ -3,9 +3,16 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
+public enum ActionType
+{
+    PickUp,
+    Harvest,
+    Interact
+}
+
 public class InteractiveAction
 {
-    public string actionName;
+    public ActionType actionType;
     public string itemName;
 }
 
@@ -56,11 +63,26 @@ public class UIManager : MonoBehaviour
     {
         if (currentInteractiveAction != null)
         {
-            interactiveActionText.text = currentInteractiveAction.actionName + " " + currentInteractiveAction.itemName;
+            interactiveActionText.text = GetActionText(currentInteractiveAction.actionType) + " " + currentInteractiveAction.itemName;
         }
         else
         {
             interactiveActionText.text = "";
+        }
+    }
+
+    string GetActionText(ActionType action)
+    {
+        switch (action)
+        {
+            case ActionType.PickUp:
+                return "Pick up";
+            case ActionType.Harvest:
+                return "Harvest";
+            case ActionType.Interact:
+                return "Interact";
+            default:
+                return "ACTION TEXT ERROR";
         }
     }
 }
